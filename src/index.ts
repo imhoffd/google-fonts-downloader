@@ -1,5 +1,3 @@
-import getIP from './getIP'
+import program from './program'
 
-getIP().then(ip => {
-  console.log(ip.data)
-})
+program.parse()
