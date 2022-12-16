@@ -15,6 +15,7 @@
     "eslint": "eslint src --ext .ts",
     "prepare": "pnpm build"
   },
+  "files": ["dist"],
   "keywords": [],
   "author": "Daniel Imhoff <dwieeb@gmail.com>",
   "license": "MIT",
