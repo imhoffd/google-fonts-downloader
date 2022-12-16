@@ -1,6 +1,6 @@
 {
   "name": "@imhoff/google-fonts-downloader",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Specify a Google Fonts Stylesheet URL and get a directory of font assets.",
   "main": "dist/index.js",
   "bin": {
@@ -15,7 +15,9 @@
     "eslint": "eslint src --ext .ts",
     "prepare": "pnpm build"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "keywords": [],
   "author": "Daniel Imhoff <dwieeb@gmail.com>",
   "license": "MIT",
