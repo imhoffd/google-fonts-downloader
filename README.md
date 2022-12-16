@@ -20,5 +20,5 @@ npx @imhoff/google-fonts-downloader <url> [options]
 npx @imhoff/google-fonts-downloader \
   "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" \
   --output vanilla-extract \
-  --url-prefix "/public/fonts/"
+  --url-prefix "/fonts/"
 ```
