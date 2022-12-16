@@ -1,3 +1,1 @@
-import program from './program'
-
-program.parse()
+export { default } from './program'
