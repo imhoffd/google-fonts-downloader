@@ -43,7 +43,7 @@ export default async function writeVE(
       .join('\n\n') +
     '\n'
 
-  const filePath = path.join(options.outputDir, 'fonts.ts')
+  const filePath = path.join(options.outputDir, 'fonts.css.ts')
   await fs.writeFile(filePath, css, 'utf8')
   console.log(`wrote '${filePath}'`)
 }
