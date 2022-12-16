@@ -1,11 +1,12 @@
+import { camelCase, uniqBy } from 'lodash/fp'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { camelCase, uniqBy } from 'lodash/fp'
 
 import pkg from '../package.json'
-import Font from './Font'
+
+import type Font from './Font'
 import isNonNull from './isNonNull'
-import { Options } from './program'
+import type { Options } from './program'
 
 export default async function writeVE(
   fonts: Font[],
@@ -28,11 +29,11 @@ export default async function writeVE(
       .flatMap(font => font.srcurls.map(srcurl => [font, srcurl] as const))
       .map(([{ family, style, display, weight, unicodeRange }, { filename }]) =>
         [
-          `globalFontFace(${fontVariables.get(family)}, {`,
+          `globalFontFace(${fontVariables.get(family)!}, {`,
           `  fontStyle: '${style}',`,
           `  fontWeight: ${weight},`,
           display ? `  fontDisplay: '${display}',` : null,
-          `  src: \`url('${options.urlPrefix}${filename}')\`,`,
+          `  src: \`url('${options.urlPrefix ?? ''}${filename}')\`,`,
           `  unicodeRange: '${unicodeRange}',`,
           `})`,
         ]

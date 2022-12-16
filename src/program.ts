@@ -1,11 +1,12 @@
 import axios from 'axios'
 import { Command, Option } from 'commander'
-import UserAgent from 'user-agents'
 import fs from 'node:fs/promises'
-import parseFonts from './parseFonts'
+import UserAgent from 'user-agents'
 
 import { bin, description, version } from '../package.json'
+
 import downloadFont from './downloadFont'
+import parseFonts from './parseFonts'
 import writeCSS from './writeCSS'
 import writeVE from './writeVE'
 
@@ -47,7 +48,8 @@ program
       options.uaFilter.map(regex => new RegExp(regex)),
     )
 
-    const { data } = await axios.get(url, {
+    const { data } = await axios.get<string>(url, {
+      responseType: 'text',
       headers: {
         'User-Agent': agent.toString(),
       },

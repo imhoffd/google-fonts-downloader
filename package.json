@@ -11,8 +11,8 @@
     "watch": "pnpm build --watch",
     "lint": "pnpm run eslint && pnpm run prettier --check",
     "fmt": "pnpm run eslint --fix && pnpm run prettier --write",
-    "prettier": "prettier \"**/*.ts\"",
-    "eslint": "eslint . --ext .ts",
+    "prettier": "prettier \"src/**/*.ts\"",
+    "eslint": "eslint src --ext .ts",
     "prepare": "pnpm build"
   },
   "keywords": [],

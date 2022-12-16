@@ -2,7 +2,7 @@ import axios from 'axios'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
-import { FontSrcUrl } from './Font'
+import type { FontSrcUrl } from './Font'
 
 export default async function downloadFont(
   { url, filename }: FontSrcUrl,
@@ -13,6 +13,6 @@ export default async function downloadFont(
   })
 
   const filePath = path.join(outputDir, filename)
-  await fs.writeFile(filePath, response.data)
+  await fs.writeFile(filePath, response.data as Buffer)
   console.log(`wrote '${filePath}'`)
 }

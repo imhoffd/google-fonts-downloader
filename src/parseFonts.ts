@@ -1,8 +1,9 @@
-import css from 'css'
+import type css from 'css'
 import { __, find, kebabCase, trimChars } from 'lodash/fp'
 import path from 'node:path'
-import Font, { FontSrcUrl } from './Font'
 
+import type { FontSrcUrl } from './Font'
+import type Font from './Font'
 import parseStylesheet from './parseStylesheet'
 
 const isComment = (rule: css.Node): rule is css.Comment =>
@@ -48,16 +49,11 @@ export default function parseFonts(stylesheet: string): Font[] {
       )
 
       if (
-        !fontFamilyDeclaration ||
-        !fontFamilyDeclaration.value ||
-        !fontStyleDeclaration ||
-        !fontStyleDeclaration.value ||
-        !fontWeightDeclaration ||
-        !fontWeightDeclaration.value ||
-        !srcDeclaration ||
-        !srcDeclaration.value ||
-        !unicodeRangeDeclaration ||
-        !unicodeRangeDeclaration.value
+        !fontFamilyDeclaration?.value ||
+        !fontStyleDeclaration?.value ||
+        !fontWeightDeclaration?.value ||
+        !srcDeclaration?.value ||
+        !unicodeRangeDeclaration?.value
       ) {
         throw new Error('Misshapened font-face rule')
       }
@@ -80,16 +76,9 @@ export default function parseFonts(stylesheet: string): Font[] {
       const srcurls: FontSrcUrl[] = []
 
       for (const src of srcDeclaration.value.split(',')) {
-        const match = src.match(
-          /url\((?<url>.*)\)\s+format\(\'(?<format>.*)\'\)/,
-        )
+        const match = src.match(/url\((?<url>.*)\)\s+format\('(?<format>.*)'\)/)
 
-        if (
-          !match ||
-          !match.groups ||
-          !match.groups.url ||
-          !match.groups.format
-        ) {
+        if (!match?.groups?.url || !match?.groups?.format) {
           throw new Error('Misshapened src declaration')
         }
 
