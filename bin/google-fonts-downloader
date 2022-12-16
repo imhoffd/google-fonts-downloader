@@ -2,6 +2,6 @@
 
 process.title = 'google-fonts-downloader'
 
-var program = require('..')
+var { default: program } = require('..')
 
 program.parse()
